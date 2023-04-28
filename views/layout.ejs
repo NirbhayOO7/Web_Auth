@@ -1,0 +1,18 @@
+<%# comments in ejs files are written using this way %>
+
+<%# the name of layout file should be always layout.ejs or else it will not compile and give error%>
+
+<%# the body variable is predefined and any partial file will be added at the place of body variable %>
+
+<html>
+    <head>
+        <title><%= title %></title>
+    </head>
+    <body>
+        <%- include('_header'); %>
+        <main>
+            <%- body %>
+        </main>
+        <%- include('_footer'); %>
+    </body>
+</html>
