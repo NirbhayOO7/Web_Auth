@@ -10,18 +10,24 @@ passport.use(new LocalStrategy({
 async function(req, email, password, done){
     try {
         let user = await User.findOne({email: email});
-        console.log("user", user);
-        user.comparePassword(password, function(matchError, isMatch){
-            if(matchError){
-                return done(matchError);
-            }
-            else if(!isMatch){
-                return done(null, false);
-            }
-            else{
-                done(null, user);
-            }
-        })
+        // console.log("user", user);
+        if(user!==null){
+            user.comparePassword(password, function(matchError, isMatch){
+                if(matchError){
+                    return done(matchError);
+                }
+                else if(!isMatch){
+                    req.flash('error', 'Invalid email/password!');
+                    return done(null, false);
+                }
+                else{
+                    return done(null, user);
+                }
+            });
+        }else{
+            req.flash('error', 'Email does not exist!');
+            return done(null,false);
+        }
     } catch (error) {
         return done(error);
     }

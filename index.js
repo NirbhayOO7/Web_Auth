@@ -8,7 +8,9 @@ const expressLayouts = require('express-ejs-layouts');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const passport = require('passport');
-const passportLocal = require('./config/passport-local-auth'); 
+const passportLocal = require('./config/passport-local-auth');
+const flash = require('connect-flash');                             
+const customMware = require('./config/middleware');
 
 
 //set app to look for static files in assets folder
@@ -52,6 +54,10 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
+
+
+app.use(flash());
+app.use(customMware.setFlash);
 
 
 //setting up express router
