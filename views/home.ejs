@@ -8,6 +8,13 @@
         <br>
         <a href="/user/sign-up">Sign Up</a>
         <br>
-        <a href="/user/sign-out">Sign Out</a>
+        <% if(locals.user){%>
+            <form action="/user/change-password-after-signed-in/<%= locals.user._id %>" method="post">
+                <label for="pass">Change Password:</label>
+                <input type="password" name="password" id="pass" required>
+                <input type="submit" value="Submit">
+            </form>
+            <a href="/user/sign-out">Sign Out</a>
+        <%}%>
     </body>
 </html>
