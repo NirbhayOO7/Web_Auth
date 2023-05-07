@@ -1,15 +1,23 @@
-<div>
+<link rel="stylesheet" href="/css/signin.css">
+<div id="signinpage">
     <form action="/user/create-session" method="post">
-        <label for="Email">Enter Your Email:</label>
-        <input type="email" name="email" id="Email" placeholder="Enter your email..." required>
-        <label for="Password">Enter Your Password:</label>
-        <input type="password" name="password" id="Password" placeholder="Enter password..." required>
-        <input type="submit" value="Submit">
+        <div>
+            <label for="Email">Enter Your Email:</label>
+            <input type="email" name="email" id="Email" placeholder="Enter your email..." required>
+        </div>
+        <div>
+            <label for="Password">Enter Your Password:</label>
+            <input type="password" name="password" id="Password" placeholder="Enter password..." required>
+        </div>
+        <div>
+            <input type="submit" value="Submit" class="links">
+        </div>
     </form>
     <div>
         <a href="/user/forget-password">Forget Password</a>
     </div>
     <div>
-        <a href="/user/auth/google">Google SignIn/SignUp</a>
+        <p>Or SingIn/Sign using google</p>
+        <a href="/user/auth/google"><img src="https://cdn-icons-png.flaticon.com/512/300/300221.png" alt="Google SingIn/SignUp"></a>
     </div>
 </div>

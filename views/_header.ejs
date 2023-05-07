@@ -1,3 +1,16 @@
+
 <header>
-    <h3>Header!</h3>
+    <div>
+        <h2>WEB AUTH</h2>
+    </div>
+    <div id="profile">
+        <% if(locals.user){ %>
+        <div>
+            <h2><%= locals.user.name %></h2>
+        </div>
+        <div>
+            <h2><a href="/user/sign-out">Sign Out</a></h2>
+        </div>
+        <%}%>        
+    </div>
 </header>

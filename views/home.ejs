@@ -1,20 +1,24 @@
 <html>
     <head>
         <title> <%= title%></title>
+        <link rel="stylesheet" href="/css/homepage.css">
     </head>
     <body>
-        <h1>Welcome to homepage of Web Auth app!</h1>
-        <a href="/user/sign-in">Sign In</a>
-        <br>
-        <a href="/user/sign-up">Sign Up</a>
-        <br>
-        <% if(locals.user){%>
-            <form action="/user/change-password-after-signed-in/<%= locals.user._id %>" method="post">
-                <label for="pass">Change Password:</label>
-                <input type="password" name="password" id="pass" required>
-                <input type="submit" value="Submit">
-            </form>
-            <a href="/user/sign-out">Sign Out</a>
-        <%}%>
+        <div id="homepage">
+            <h1>Welcome to homepage of Web Auth app!</h1>
+            <div class="links">
+                <a href="/user/sign-in">Sign In</a>
+            </div>
+            <div class="links">
+                <a href="/user/sign-up">Sign Up</a>
+            </div>
+            <% if(locals.user){%>
+                <form action="/user/change-password-after-signed-in/<%= locals.user._id %>" method="post">
+                    <label for="pass">Change Password:</label>
+                    <input type="password" name="password" id="pass" required>
+                    <input type="submit" value="Submit" class="links">
+                </form>
+            <%}%>
+        </div>
     </body>
 </html>
