@@ -1,4 +1,4 @@
-# Use this link to see the short video of how the page looks and how it works.
+# Click on below link to see a short video on how the web auth application looks and how it works.
 https://drive.google.com/file/d/1EAa6rLzQbkiM-8fVKJprtoSkaCVd-7Rs/view?usp=share_link
 # About repo.
 
