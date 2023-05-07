@@ -33,6 +33,7 @@ app.set('views', path.join(__dirname, 'views'));
 // setting up view engine object key is app to ejs
 app.set('view engine', 'ejs');
 
+// instructing app to use session for setting up the cookies in the app and at the same time storing the session cookies in database 
 app.use(session({
     name: 'socailcode',
     secret: 'randomtext',
@@ -52,6 +53,7 @@ app.use(session({
     )
 }));
 
+// intializing passoport
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);

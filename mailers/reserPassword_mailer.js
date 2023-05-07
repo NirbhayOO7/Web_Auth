@@ -1,6 +1,7 @@
 const nodeMailer = require('../config/nodemailer');
 
 
+// funciton fpr sending the mail to user
 exports.resetPassword = (accessToken) => {
     let htmlString = nodeMailer.renderTemplate({accessToken: accessToken}, '/resetpassword/reset_password.ejs');
     
@@ -14,7 +15,6 @@ exports.resetPassword = (accessToken) => {
             console.log('Error in sending mail', err);
             return;
         }
-        // console.log("info", info);
         return;
     });
 

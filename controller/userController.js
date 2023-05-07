@@ -27,6 +27,7 @@ module.exports.signin = function(req, res){
     });
 }
 
+// function to create user in our local database 
 module.exports.create = async function(req, res){
 
     if(req.body.password !== req.body.confirm_pass){
@@ -56,11 +57,13 @@ module.exports.create = async function(req, res){
 
 }
 
+// function to createsession(signing in) for our user 
 module.exports.createSession = function(req, res){
     req.flash('success', 'Successfully logged In!');
     return res.redirect('/');
 }
 
+// function for logging out the user 
 module.exports.destroySession = function(req, res){
     // req.logout is a function of passport js 
     req.logout(function(err){
@@ -73,7 +76,7 @@ module.exports.destroySession = function(req, res){
     });
 }
 
-// render forget password page
+// function to render forget password page
 module.exports.forgetPassword = (req, res)=>{
     return res.render(
         'forget_password',{
@@ -81,7 +84,7 @@ module.exports.forgetPassword = (req, res)=>{
         });
 }
 
-//reset password action
+//function to reset password action
 module.exports.resetPassword = async function(req, res){
     try {
         let user = await User.findOne({email: req.body.email});
@@ -130,13 +133,10 @@ module.exports.changePassword =async function(req, res){
 module.exports.submitChangePassword = async function(req, res){
     
     try{
-        // console.log('Under submit password change');
         if(req.body.password == req.body.confirm_password){
 
-            // console.log('Under submit password change and password and confirm password matched');
             let accessToken = await Token.findOne({access_token: req.params.id}).populate('user');
-
-            // console.log(accessToken);
+            
             if(accessToken.isValid){
                 accessToken.user.password = req.body.password;
 
@@ -144,7 +144,6 @@ module.exports.submitChangePassword = async function(req, res){
                 accessToken.user.save();
                 accessToken.save();
 
-                // console.log('user password and access token modified',accessToken);
                 req.flash('success', 'Password changed successfully');
                 return res.redirect('/user/sign-in');
             }

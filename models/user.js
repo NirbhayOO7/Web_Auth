@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');   // install bcryptjs to save hashed password in db rather than orginal password.
 // open below link to get more info on bcryptjs usage https://coderrocketfuel.com/article/store-passwords-in-mongodb-with-node-js-mongoose-and-bcrypt
 
+
+// user schema for holding data about users present in web_auth application 
 const UserSchema = new mongoose.Schema({
     email: {
         type : String,
@@ -48,6 +50,7 @@ UserSchema.pre("save", function(next){
     }
 });
 
+// function to authenticate the user by comparing the decrypting th password present in database and the matching it with input password
 UserSchema.methods.comparePassword = async function(password, callback){
     try {
         const isMatched = await bcrypt.compare(password, this.password);

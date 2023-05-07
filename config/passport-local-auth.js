@@ -3,6 +3,8 @@ const User = require('../models/user');
 
 const LocalStrategy = require('passport-local').Strategy;
 
+// configuring local authentication using passport which uses email and password present in the local database.
+
 passport.use(new LocalStrategy({
     usernameField: 'email',
     passReqToCallback: true
@@ -34,6 +36,7 @@ async function(req, email, password, done){
 }
 ));
 
+// serialized user is uded to set the value in the session cookie 
 passport.serializeUser(function(user, done){
     done(null, user._id);
 });
@@ -49,6 +52,7 @@ passport.deserializeUser(async function(id, done){
     }
 });
 
+// funciton to check authenticated user 
 passport.checkAuthentication = function(req, res, next){
 
     if(req.isAuthenticated()){
@@ -58,6 +62,7 @@ passport.checkAuthentication = function(req, res, next){
     return res.redirect('/users/sign-in');
 };
 
+// setting the authenticated use int he response locals 
 passport.setAuthenticatedUser = function(req, res, next){
     if(req.isAuthenticated())
     {

@@ -3,8 +3,12 @@ const ejs = require('ejs');
 const path = require('path');
 const env = require('./environment');
 
+// setting up nodemailer for sending mails using gmail
+
+//setting up the gmail server and authentication used for using gmail services
 let transporter = nodemailer.createTransport(env.smtp);
 
+// setting up the template file which contains the content of mail 
 let renderTemplate = (data, relativePath) =>{
     let mailHTML;
     ejs.renderFile(

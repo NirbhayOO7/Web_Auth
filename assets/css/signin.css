@@ -1,5 +1,5 @@
+/* sign in page styling  */
 #signinpage{
-    /* border: 2px solid black; */
     display: flex;
     flex-direction: column;
     align-items: center;
