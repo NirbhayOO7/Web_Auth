@@ -10,7 +10,8 @@ const MongoStore = require('connect-mongo');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-auth');
 const passportGoogle = require('./config/passport-google-auth');
-const flash = require('connect-flash');                             
+const flash = require('connect-flash');   
+const env = require('./config/environment');                          
 const customMware = require('./config/middleware');
 
 
@@ -36,7 +37,7 @@ app.set('view engine', 'ejs');
 // instructing app to use session for setting up the cookies in the app and at the same time storing the session cookies in database 
 app.use(session({
     name: 'socailcode',
-    secret: 'randomtext',
+    secret: env.session_Secret,
     saveUninitialized: false,
     resave: false,
     cookie: {
