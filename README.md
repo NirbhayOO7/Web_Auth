@@ -1,3 +1,5 @@
+# Use this link to see the short video of how the page looks and how it works.
+https://drive.google.com/file/d/1EAa6rLzQbkiM-8fVKJprtoSkaCVd-7Rs/view?usp=share_link
 # About repo.
 
 This repo contains the code for building a web authentication app that can used as a starter code for creating any new application.
